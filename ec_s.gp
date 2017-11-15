@@ -1,4 +1,4 @@
-ec_s(E,P,n) = {
+ec_s(E,P,n) ={
 local(Q,bi,i);
 Q = P;
 i=1;
