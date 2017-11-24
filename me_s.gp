@@ -31,6 +31,7 @@ for(i=2,length(bi),
   );
 return (Y);
 }
+/*
 {\\検証用
 E = ec_crypto(32);
 for(i=1,10000,
@@ -47,3 +48,4 @@ for(i=1,10000,
   print(lift(R-S));
   );
 }
+*/
