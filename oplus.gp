@@ -13,13 +13,13 @@ oplus(E,P,Q) = {
   return (R);
 }
 
-{
-E = ec_crypto(32);
-for(i=1,10000,
-  P = random(E);
-  \\n=random(2^32);
-  Q = oplus(E,P,P);
+\\{
+\\E = ec_crypto(32);
+\\for(i=1,10000,
+\\  P = random(E);
+\\  n=random(2^32);
+\\  Q = oplus(E,P,P);
   \\R = ec_s(E,P,n);
-  print(lift(P-Q));
-  );
-}
+  \\  print(lift(P-Q));
+  \\);
+\\}
