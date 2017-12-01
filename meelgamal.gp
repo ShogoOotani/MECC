@@ -2,24 +2,40 @@
 E=ec_crypto(32);
 G = random(E);
 Z = random(E);
+P = random(E);
+n = random(2^32);
+m = random(2^32); \\平文
 
 for(i=1,10000,
-  db = random(E.no);
-  Pb = me_s(E,G,Z,db);
 
-  r = random(E.no);
+  P = random(E);
+  hp = lift(P);
+  Ghp = me_s(E,G,Z,hp);
+  Pn = me_s(E,P,Z,n);
+  K =elladd(E,Ghp,Pn);
 
-  R = me_s(E,G,Z,r);
-  K = me_s(E,Pb,Z,r);
-  M = random(E);
-  C = elladd(E,M,K);
-  KK = me_s(E,R,Z,db);
-  MM = ellsub(E,C,KK);
-  print1(lift(M-MM));
-  if(lift(M-MM)!=0,
-  print("error");
-  break;
+  R = random(E);
+  hr = lift(R);
+  Ghr = me_s(E,G,Z,hr);
+  Rn = me_s(E,R,Z,n);
+  C1 = elladd(E,Ghr,Rn);
+
+  Rhr = me_s(E,R,Z,hr);
+  C2 = elladd(E,K,Rhr);
+  C2 = lift(C2[1]);
+
+  c2 = C2+m; \\？？？？
+
+  Php = me_s(E,P,Z,hp);
+  M = elladd(E,C1,Php);
+  M = lift(M[1]);
+  mm =c2 - M;
+
+  print1(m-mm",");
+
+  if((m-mm)!=0,
+    print("error");
+
   );
-  );
-
+);
 }
