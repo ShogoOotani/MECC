@@ -6,7 +6,7 @@ oplus(E,P,Q) = {
   a = lift(R_y);
   b = R_y.mod;
   k = kronecker(a,b);
-  print("k="k);
+  \\print("k="k);
   if(k==1, R = ellsub(E,elladd(E,P,P),Q),
            R = ellsub(E,elladd(E,Q,Q),P);
            );
