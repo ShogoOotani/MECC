@@ -6,14 +6,16 @@ n = random(2^32);
 
 for(i=1,10000,
   P = random(E);
-  hp = lift(P);
+  hp = lift(P[1]);
   Ghp = me_s(E,G,Z,hp);
   Pn = me_s(E,P,Z,n);
 
   Ka = elladd(E,Ghp,Pn);
 
   Q = random(E);
-  hq = lift(Q);
+  \\print(Q);
+  hq = lift(Q[1]);
+  \\print(hq);
   Ghq = me_s(E,G,Z,hq);
   Qn = me_s(E,Q,Z,n);
 
@@ -23,6 +25,7 @@ for(i=1,10000,
   B = elladd(E,Kb,Php);
 
   Qhq = me_s(E,Q,Z,hq);
+  \\print(Qhq);
   A = elladd(E,Ka,Qhq);
 
   print1(lift(A-B));
